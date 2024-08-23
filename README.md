@@ -1,6 +1,3 @@
-Here's a refined version of your content, replacing "BookGenesis" with "VideoGallery" and focusing on responsive features:
-
----
 
 <div align="center">
 
