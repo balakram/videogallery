@@ -18,7 +18,7 @@
 
 ### Demo Screenshots
 
-![VideoGallery Desktop Demo](https://balakram.github.io/balakramtudu/img/projects/project-4.png)
+![VideoGallery Desktop Demo](demo.gif)
 
 # VideoGallery
 
