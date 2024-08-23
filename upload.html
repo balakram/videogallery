@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Studio - Upload</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="stylesheet" href="studio-styles.css">
+</head>
+
+<body class="dark-theme">
+    <header>
+        <div class="logo">
+            <a href="index.html" target="_blank">
+                <img src="https://balakram.github.io/practicemode/btlogo-icon.png" alt="BT Studios Logo" />
+            </a>
+        </div>
+
+        <h1>B T Studio</h1>
+    </header>
+
+    <main>
+        <div class="login-container">
+            <h3>Login</h3>
+            <input type="text" id="username-input" placeholder="Enter username">
+            <input type="password" id="password-input" placeholder="Enter password">
+            <button id="login-button">Login</button>
+        </div>
+
+        <div class="upload-container hidden">
+            <h3>Upload Video</h3>
+            <input type="file" id="file-input" accept="video/*">
+
+            <h4>Upload Thumbnail</h4>
+            <input type="file" id="thumbnail-input" accept="image/*">
+
+            <div class="upload-details">
+                <label for="category-select">
+                    <h4>Select Video Category:</h4>
+                </label>
+                <select id="category-select">
+                    <option value="education">Education</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="technology">Technology</option>
+                    <option value="music">Music</option>
+                    <option value="vlogs">Vlogs</option>
+                    <option value="education">Education</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="technology">Technology</option>
+                    <option value="music">Music</option>
+                    <option value="vlogs">Vlogs</option>
+                </select>
+                <h4>Enter Video Title</h4>
+                <input type="text" id="title-input" placeholder="Enter video title">
+                <h4>Enter Video Description</h4>
+                <textarea id="description-input" placeholder="Enter video description"></textarea>
+                <button id="upload-button">Upload</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="studio-script.js"></script>
+</body>
+
+</html>

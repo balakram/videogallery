@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Galary</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="control.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <a href="index.html" target="_self">
+                <img src="https://balakram.github.io/practicemode/btlogo-icon.png" alt="BT Studios Logo" />
+            </a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <button>Search</button>
+        </div>
+        <div class="user-options">
+            <button class="menu-button"><span class="icon"><i class="fac fa-menu"></i>☰</span></button>
+            <button id="upload-btn" onclick="window.location.href='upload.html'">
+                <span class="icon"><i class="fas fa-upload"></i></span>
+            </button>
+            <button id="theme-toggle"><span class="icon">🌙</span></button>
+        </div>
+    </header>
+
+    <!-- Sidebar Section -->
+    <nav class="sidebar">
+        <ul id="sidebar">
+            <li><i class="fas fa-home"></i> Home</li>
+            <li><i class="fas fa-fire"></i> Trending</li>
+            <li><i class="fas fa-play-circle"></i> Subscriptions</li>
+            <li><i class="fas fa-folder-open"></i> Library</li>
+            <li><i class="fas fa-history"></i> History</li>
+            <li><i class="fas fa-video"></i> Your videos</li>
+            <li><i class="fas fa-clock"></i> Watch later</li>
+            <li><i class="fas fa-thumbs-up"></i> Liked videos</li>
+            <li id="categories-toggle">
+                <i class="fas fa-tags"></i> Categories
+                <ul id="categories-list" class="hidden">
+                    <li data-category="Music">Music</li>
+                    <li data-category="Technology">Technology</li>
+                    <li data-category="Gaming">Gaming</li>
+                    <!-- Add more categories as needed -->
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Video display container -->
+        <div id="video-container"></div>
+
+
+
+        <!--<div class="responsive-divider"></div>-->
+        <!-- Author Info Section -->
+        <div class="author-info">
+            <h3><i class="fas fa-laptop-code"></i> Developer</h3>
+
+            <!-- Signature Image with unique IDs -->
+            <img id="signature-img-light" src="s1.png" alt="Author Signature Light" class="signature-img">
+            <img id="signature-img-dark" src="s1w.png" alt="Author Signature Dark" class="signature-img"
+                style="display: none;"> <!-- Hide this by default -->
+
+            <p>
+                <a href="https://balakram.github.io/balakramtudu/" id="author-link">Balakram Tudu</a>
+            </p>
+
+            <h4><i class="fas fa-portrait"></i> About</h4>
+            <p>Web designer and front-end developer focused on creating clean and user-friendly experiences.</p>
+            <h4><i class="fas fa-phone-square"></i> Contact</h4>
+            <p>Email: balakramtudu@gmail.com</p>
+        </div>
+
+    </nav>
+
+
+    <!-- Main Content Section -->
+    <main>
+        <div id="video-player-container" class="video-player-container hidden">
+            <video id="video-player" controls>
+                <source id="video-source" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="controls">
+                <button id="playPauseBtn"><i class="fas fa-play"></i></button>
+                <span id="timeDisplay">00:00 / 00:00</span>
+                <button id="speedBtn"><i class="fas fa-tachometer-alt"></i></button>
+                <button id="pipBtn"><i class="fas fa-window-restore"></i></button>
+                <button id="customFullscreenBtn" class="fullscreen-option"><i class="fas fa-expand"></i></button>
+                <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
+                <button id="muteBtn"><i class="fas fa-volume-up"></i></button>
+                <input type="range" id="progressBar" value="0">
+            </div>
+            <button id="close-video-player" class="close-btn">Close</button>
+        </div>
+        <div class="video-grid">
+            <!-- Videos will be dynamically loaded here -->
+        </div>
+        <div id="video-player-container" class="video-player-container hidden">
+            <div id="video-player"></div>
+            <video id="video-player" controls>
+                <source id="video-source" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <button id="close-video-player" class="close-btn">Close</button>
+        </div>
+
+        <div id="videoGrid"></div>
+
+
+    </main>
+
+
+    <!-- Upload Dialog -->
+    <div id="upload-dialog" class="upload-dialog">
+        <div class="dialog-content">
+            <h2>Upload Video</h2>
+            <input type="file" id="file-input" accept="video/*,image/*">
+            <div class="dialog-buttons">
+                <button id="upload-file-btn">Upload</button>
+                <button id="close-dialog">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="control.js"></script>
+</body>
+
+</html>

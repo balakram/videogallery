@@ -1,0 +1,427 @@
+:root {
+    --bg-color: #181818c9;
+    --text-color: #FFD700;
+    --header-bg: hsl(0, 0%, 8%);
+    --sidebar-bg: #282828;
+    --video-bg: #333;
+    --accent-color: #0073e6;
+    --paragraph-color-dark: #ffffff; /* White for dark theme */
+    --paragraph-color-light: #000000d5; /* Darker gray for light theme */
+    --link-color: #FFD700; /* Gold color for dark theme */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+body.light-theme {
+    --bg-color: #ffffff;
+    --text-color: #000000d5;
+    --header-bg: hsl(0, 0%, 4%);
+    --sidebar-bg: #ececec;
+    --video-bg: #d3d3d3;
+    --accent-color: #005bb5;
+    --paragraph-color-light: #000000; /* Dark color for light theme */
+    --paragraph-color-dark: #575757; /* White color for dark theme */
+    --link-color: #0000FF; /* Blue color for light theme */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--header-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Responsive Divider */
+.responsive-divider {
+    width: 80%;
+    height: 2px;
+    background-color: #ccc;
+    margin: 20px auto;
+    border-radius: 1px;
+    transition: width 0.3s ease; /* Smooth transition for width change */
+}
+
+/* Responsive Behavior */
+@media (max-width: 768px) {
+    .responsive-divider {
+        width: 85%; /* Slightly increase width for tablet screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .responsive-divider {
+        width: 90%; /* Further increase width for mobile screens */
+    }
+}
+
+
+
+.logo img {
+    height: 40px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0 20px;
+    border-radius: 8px;
+    border: 2px solid #FFD700; /* Gold border to match theme */
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 2px 0 0 2px;
+    
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    background-color: #FFD700; /* Gold color */
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 2px 2px 0;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effect */
+    font-weight: bold;
+}
+
+.search-bar button:hover {
+    background-color: #FFA000; /* Slightly darker gold color for hover */
+    border-color: #ffc45e; /* Change border color on hover */
+}
+
+
+.user-options button {
+    margin-left: 10px;
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.user-options .icon {
+    margin-right: 5px;
+    color: #FFD700;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    background-color: var(--sidebar-bg);
+    padding: 20px;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.sidebar.visible {
+    transform: translateX(0);
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 15px 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.sidebar ul li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.author-info {
+    margin-top: auto;
+    padding-top: 20px;
+    background-color: var(--sidebar-bg);
+    border-top: 5px solid rgba(67, 67, 67, 0.411);
+    color: var(--text-color);
+}
+
+.author-info h3, .author-info h4 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: var(--text-color);
+}
+
+.author-info p {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    color: var(--paragraph-color-dark); /* Default to dark theme color */
+}
+
+.author-info p a {
+    font-size: 18px;
+    color: #000000fa;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.author-info p a:hover {
+    text-decoration: underline;
+}
+
+#author-link {
+    color: var(--link-color);
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.signature-img {
+    display: block;
+    margin: 20px auto 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+#categories-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Initially hidden */
+    background-color: var(--sidebar-bg);
+}
+
+#categories-list li {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#categories-list li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Add a class to make the dropdown visible */
+#categories-list.visible {
+    display: block;
+}
+
+main {
+    margin-left: 220px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.video-card {
+    background-color: var(--video-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.video-card img {
+    width: 100%;
+    display: block;
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.video-info {
+    padding: 10px;
+}
+
+.video-info h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.video-info p {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.video-card:hover {
+    transform: scale(1.05);
+}
+
+.video-card a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.video-card a:hover {
+    text-decoration: none;
+}
+
+/* Upload Dialog Styles */
+.upload-dialog {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--header-bg);
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+}
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dialog-content input[type="file"] {
+    padding: 10px;
+    background-color: var(--video-bg);
+    color: var(--text-color);
+    border: none;
+    border-radius: 4px;
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dialog-buttons button {
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    flex-grow: 1;
+    margin: 0 5px;
+}
+
+.dialog-buttons button:hover {
+    background-color: #005bb5;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    main {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        transform: translateY(-100%);
+        top: 0;
+        transition: transform 0.3s ease;
+        margin-top: 10%;
+    }
+
+    .sidebar.visible {
+        transform: translateY(0);
+    }
+
+    /* Adjusting video grid for phone view */
+    .video-grid {
+        grid-template-columns: repeat(3, 1fr); /* Two columns of video cards */
+    }
+
+    /* Aligning user-options buttons to the right */
+    .user-options {
+        display: flex;
+        justify-content: flex-end; /* Aligns buttons to the right */
+        margin-left: auto; /* Pushes the user-options to the right if there is space */
+    }
+}
+
+/* Video Player Container */
+.video-player-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1e1e1e; /* Darker background for better contrast */
+    padding: 20px;
+    z-index: 1001;
+    border-radius: 12px; /* Slightly larger radius for a modern look */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); /* Enhanced shadow for better visibility */
+    width: 90%;
+    max-width: 1200px; /* Increased max-width for larger screens */
+}
+
+/* Hide the video player container by default */
+.video-player-container.hidden {
+    display: none;
+}
+
+/* Video Element Styling */
+#video-player {
+    width: 100%;
+    height: auto; /* Ensure aspect ratio is maintained */
+    max-height: 600px; /* Limit the maximum height for better fit */
+    border-radius: 8px;
+    border: 2px solid #FFD700; /* Gold border to match theme */
+}
+
+/* Close Button Styling */
+.close-btn {
+    margin-top: 15px;
+    padding: 12px 25px;
+    border: none;
+    background-color: #ff4c4c; /* Softer red for better visibility */
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Added transition for scaling effect */
+}
+
+/* Close Button Hover Effect */
+.close-btn:hover {
+    background-color: #cc0000;
+    transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
+/* Responsive Styling for Mobile Devices */
+@media screen and (max-width: 768px) {
+    .video-player-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    #video-player {
+        max-height: 80vh; /* Adjust height to fit viewport */
+    }
+
+    .close-btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px;
+    }
+}
+
